@@ -1,0 +1,12 @@
+CORRECAO DE AUDIO ANDROID - English GO
+
+1. Copie o conteudo desta pasta para C:\Projetos\english-go, sem apagar android/.
+2. Abra PowerShell na pasta do projeto.
+3. Execute: powershell -ExecutionPolicy Bypass -File .\APLICAR-AUDIO.ps1
+4. Execute: npm install
+5. Execute: npm run build
+6. Execute: npx cap sync android
+7. Abra Android Studio, gere novo APK e instale por cima do atual.
+
+O plugin utiliza TextToSpeech nativo do Android, com velocidade 0.9x normal e 0.55x lenta no vocabulario. Requer motor TTS e voz inglesa instalada no aparelho. Não exige internet durante reprodução se a voz offline estiver instalada.
+Nao execute cap add android novamente. A logo anterior permanece preservada.

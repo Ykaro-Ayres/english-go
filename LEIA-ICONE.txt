@@ -1,0 +1,7 @@
+CORRECAO DO ICONE NATIVO ANDROID
+1. Copie o conteudo deste ZIP para a pasta raiz do projeto English GO, substituindo arquivos quando solicitado.
+2. No PowerShell, na pasta do projeto, execute: .\APLICAR-ICONE.ps1
+   Se o PowerShell bloquear scripts: powershell -ExecutionPolicy Bypass -File .\APLICAR-ICONE.ps1
+3. No Android Studio, execute Build > Clean Project e gere um novo APK.
+4. Reinstale o APK no celular. Se o launcher mantiver o icone antigo, remova o atalho e adicione-o novamente.
+NAO execute cap add android novamente. O script modifica recursos nativos; cap sync sozinho nao muda o icone.
