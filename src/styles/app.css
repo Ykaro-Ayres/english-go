@@ -7,3 +7,13 @@
 /* English GO approved premium blue/violet identity */
 :root{color:#f8fafc;background:#0b1020;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
 .sidebar,.mobileNav{background:#10172b;border-color:#263252}.top{border-color:#263252}.stat,.panel,.wordCard,.lessonCard,.onboardCard{background:#151d34;border-color:#293757}.hero{background:linear-gradient(125deg,#182f68,#34318b 62%,#6535ad);border-color:#5862bd}.eyebrow,.brand b,.mobileBrand b,.onboardLogo b,.wordCard>b,.lessonText .mini,.questionNumber,.history b{color:#a5b4fc}.primary,.heroButton{background:linear-gradient(110deg,#2563eb,#7c3aed);color:white}.primary:hover,.heroButton:hover{background:#4f46e5}.chip.chosen{background:#4f46e5;border-color:#6366f1;color:white}.nav.active,.nav:hover{background:#222b53;color:#c4b5fd}.lessonIcon,.levelBadge,.brandIcon{background:#30327a;color:#c4b5fd}.option.selected{background:#2c2c67;border-color:#818cf8}.audio{background:#2a3473;color:#e0e7ff}.audio.slow{background:#31234f;color:#e9d5ff}.mobileNav button.active{color:#a5b4fc}.onboard{background:radial-gradient(circle at top,#292763,#0b1020 68%)}.onboardCard input,.onboardCard select,.search,.answerInput,.option{background:#1b2540;border-color:#39466b}.wordPicture{display:block;width:min(100%,240px);height:200px;object-fit:contain;margin:8px auto 20px;border-radius:20px}.quizPrompt{font-size:28px;font-weight:800;color:#c4b5fd}.vocabLab .question{max-width:760px}.brandImage{border-radius:13px}
+
+/* Android status-bar overlap fix: keep the app header below system indicators. */
+@media (max-width:650px) {
+  .top {
+    box-sizing: content-box;
+    padding-top: max(32px, env(safe-area-inset-top, 0px));
+    min-height: 65px;
+    height: 65px;
+  }
+}

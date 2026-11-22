@@ -1,74 +1,76 @@
-# English GO 1.0 — Base funcional offline
+# 🇺🇸🇬🇧 English GO
 
-Aplicativo React + TypeScript, com interface responsiva, currículo inicial, correção determinística, trilhas por objetivo e armazenamento local.
+**Aplicativo Android para aprender inglês com prática progressiva, exercícios e pronúncia offline.**
 
-## Executar no VS Code
+Projeto de portfólio desenvolvido com **React, TypeScript, Capacitor e Java**, explorando a integração de uma interface web com recursos nativos do Android.
 
-Requer Node.js 20.19+ ou 22.12+.
+## 📱 Telas do aplicativo
+
+| Início | Laboratório de palavras | Trilha de aprendizagem |
+|:--:|:--:|:--:|
+| ![Tela inicial do English GO](docs/screenshots/EnglishGO-print-2-sem-barra.jpg) | ![Laboratório de palavras e botões de áudio](docs/screenshots/EnglishGO-print-1-sem-barra.jpg) | ![Trilha personalizada](docs/screenshots/EnglishGO-print-3-sem-barra.jpg) |
+
+*Capturas reais do aplicativo Android, com os indicadores do sistema removidos para apresentação.*
+
+## ✨ Funcionalidades
+
+- Aprendizado progressivo: **palavra → áudio → frase**.
+- Exercícios de vocabulário, escuta e formação de frases.
+- Revisão de palavras e acompanhamento do progresso local.
+- Trilhas de aprendizado organizadas por níveis de inglês.
+- Pronúncia em velocidade normal e lenta usando **Text-to-Speech nativo no Android**.
+- Reprodução offline quando o dispositivo dispõe de voz inglesa instalada.
+- Interface adaptada à área segura da barra de status do Android.
+
+> **Estado do projeto:** protótipo funcional em desenvolvimento. A presença de níveis A1–C2 na interface não significa que todo o currículo esteja concluído ou que o aplicativo ofereça certificação de proficiência.
+
+## 🛠️ Tecnologias
+
+| Tecnologia | Utilização |
+|---|---|
+| React + TypeScript | Interface e lógica de aprendizagem |
+| Vite | Ambiente de desenvolvimento e build |
+| Capacitor | Empacotamento e integração com Android |
+| Java / Android TextToSpeech | Reprodução nativa de voz |
+| Android Studio / Gradle | Compilação e testes do APK |
+
+## ▶️ Executar o projeto
+
+Requisitos: Node.js compatível com a versão do Vite usada no projeto, Android Studio e SDK Android para compilar o aplicativo.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abra a URL local exibida pelo Vite.
-
-## Build de produção
+Para atualizar o projeto Android:
 
 ```bash
 npm run build
-```
-
-## Android (próxima integração)
-
-O projeto foi preparado para web e futura integração com Capacitor. **Ainda não inclui um projeto Android ou APK**. Para integrar depois:
-
-```bash
-npm install @capacitor/core @capacitor/android
-npm install -D @capacitor/cli
-npx cap init "English GO" "com.englishgo.app" --web-dir dist
-npm run build
-npx cap add android
 npx cap sync android
 npx cap open android
 ```
 
-## Estrutura
+No Android Studio, compile o aplicativo e instale o APK em um dispositivo de teste. Para o áudio offline, configure uma voz em inglês no mecanismo de síntese de voz do Android.
 
-- `src/data/curriculum.ts`: esquema de currículo, lições e dicionário demonstrativos.
-- `src/engine/progress.ts`: respostas, pontuação, desbloqueio, persistência e revisão.
-- `src/main.tsx`: interface funcional, onboarding, navegação e lições.
-- `src/styles/app.css`: layout responsivo.
+## 🧩 Estrutura principal
 
-## Limitações declaradas
+- `src/main.tsx` — interface, navegação e atividades.
+- `src/VocabularyLab.tsx` — laboratório de palavras.
+- `src/audio/speak.ts` — integração da reprodução de áudio.
+- `src/data/` — conteúdo e avaliações.
+- `src/engine/` — progresso e revisão.
+- `src/styles/app.css` — estilos e adaptação para dispositivos móveis.
+- `android/` — projeto Android e integração nativa.
 
-- Esta é uma **fundação funcional**, não um curso completo A1–C2. Inclui 9 lições e 8 verbetes de demonstração.
-- Voz utiliza SpeechSynthesis do sistema/navegador. Funciona offline **somente quando houver voz inglesa instalada localmente**; o navegador pode não garantir isso. Nenhum áudio é enviado pelo aplicativo a uma API própria.
-- Ainda não há reconhecimento de fala, avaliação fonética, IA local, sincronização, teste de nivelamento, agendamento real de repetição espaçada ou pacotes offline de áudio.
-- A correção escrita é exata, ignorando maiúsculas, pontuação simples e espaços. Respostas semanticamente equivalentes podem ser rejeitadas.
-- Os níveis A2–C2 possuem apenas exemplos introdutórios e não certificam proficiência.
-- Fontes Google Fonts são opcionais; sem conexão, a interface usa fontes locais de sistema.
-- O armazenamento local pode ser apagado ao limpar dados do navegador; não há backup remoto.
+## 🎯 Aprendizados do projeto
 
-## Próximas etapas recomendadas
+A integração do áudio foi um desafio técnico importante: a API de síntese de voz do navegador não funcionou no WebView Android, exigindo integração com o `TextToSpeech` nativo e ajustes no processo de compilação Java. Também foi necessário corrigir a área segura do cabeçalho para não sobrepor os indicadores do sistema.
 
-1. Separar componentes e migrar currículo para JSON versionado com validação de esquema.
-2. Criar banco SQLite e repositórios para perfis, lições, resultados e revisões.
-3. Desenvolver gerador de revisão espaçada e testes de nivelamento.
-4. Adicionar áudio offline empacotado e TTS nativo Android.
-5. Integrar reconhecimento de voz offline e depois um modelo conversacional local, após benchmarks em dispositivo real.
-6. Produzir e revisar conteúdo pedagógico amplo A1–C2 por especialistas.
-7. Implementar testes automatizados, acessibilidade e publicação Android.
+## 📌 Próximos passos
 
+Ampliar o conteúdo pedagógico, fortalecer testes automatizados, melhorar acessibilidade e continuar validando a experiência em dispositivos Android reais.
 
-## Atualização 1.1 — provas e identidade visual
-- Provas finais A1, A2, B1, B2, C1, C2, com 4 questões de demonstração por nível.
-- É necessário concluir as lições disponíveis do nível e acertar ao menos 80% na prova para liberar o nível seguinte.
-- Resultados das provas são persistidos localmente. As provas podem ser refeitas.
-- Logo selecionada integrada ao cabeçalho, menu, onboarding, favicon e manifesto PWA.
-- **Limitações:** banco de provas é demonstrativo e pequeno, não é exame CEFR validado; avaliação oral e rubricas de escrita ainda não foram implementadas. Reconhecimento de voz offline requer integração nativa futura.
-- Selecionar nível inicial avançado no onboarding é uma escolha do aluno, ainda sem prova de nivelamento validada.
+---
 
-
-## Atualização visual e vocabulário
-Identidade azul/violeta, logo UK/US, 312 palavras em 52 grupos, 20 ilustrações SVG offline e exercícios alternados de áudio, tradução e imagem. O reconhecimento de fala e a IA conversacional local ainda não estão implementados.
+**Desenvolvido como projeto pessoal de estudo e portfólio.**
